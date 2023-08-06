@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Login } from '../models/login';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +12,9 @@ export class LoginComponent {
     username: '',
     password: ''
   };
+  constructor(private router: Router) {}
 
   isLoginValid() {
-
     return (
       this.loginData.username.includes('@') &&
       this.loginData.username.length >= 10 &&
@@ -29,6 +30,8 @@ export class LoginComponent {
 
     if (this.isLoginValid()) {
       console.log('Login Data:', this.loginData);
+      this.router.navigate(['/home']);
+      
     }
   }
 }
